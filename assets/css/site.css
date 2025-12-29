@@ -2,12 +2,80 @@
 body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
+    background: var(--bg-main);
+    color: var(--text-main);
 }
 
-body.dark-mode {
-    background: #121212;
-    color: #f1f1f1;
+*, *::before, *::after {
+    box-sizing: border-box;
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+body.dark-mode {
+    --bg-main: #121212;
+    --bg-surface: #1a1a1a;
+    --bg-elevated: #222;
+    --bg-soft: #4d4d4d;
+    --bg-hero-panel: #1f1f1f; /* slightly lifted from bg-main */
+
+    --text-main: #f1f1f1;
+    --text-muted: #b5b5b5;
+    --text-inverse: #111;
+
+    --border-subtle: rgba(255,255,255,0.12);
+    --accent-primary: #f97316;
+}
+
+
+/* ================= THEME TOKENS ================= */
+
+:root {
+    /* Backgrounds */
+    --bg-main: #ffffff;
+    --bg-surface: #f4f4f4;
+    --bg-elevated: #ffffff;
+    --bg-soft: #f2f5f9; /* pale blue-gray (Microsoft-ish) */
+     --bg-hero-panel: #d0d8e3; /* soft blue-gray, keeps form */
+
+    /* Text */
+    --text-main: #111111;
+    --text-muted: #555555;
+    --text-inverse: #ffffff;
+
+    /* Borders & Accents */
+    --border-subtle: rgba(0,0,0,0.1);
+    --accent-primary: #c2410c;
+}
+
+
+body:not(.dark-mode) {
+    --bg-main: #ffffff;
+    --bg-surface: #f4f4f4;
+    --bg-elevated: #ffffff;
+
+    --text-main: #111111;
+    --text-muted: #555555;
+    --text-inverse: #ffffff;
+
+    --border-subtle: rgba(0,0,0,0.1);
+    --accent-primary: #c2410c;
+}
+
 
 /* ================= NAVBAR ================= */
 
@@ -20,7 +88,9 @@ body.dark-mode {
     top: 0;
     width: 100%;
     height: var(--nav-height);
-    background: #111;
+    background: var(--bg-main);
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-subtle);
     z-index: 1000;
 }
 
@@ -46,14 +116,14 @@ body.dark-mode {
     gap: 0.5rem;
     background: none;
     border: none;
-    color: #fff;
+    color: var(--text-main);
 }
 
 .hamburger-icon span {
     display: block;
     width: 22px;
     height: 2px;
-    background: #fff;
+    background: var(--text-main);
     margin: 4px 0;
 }
 
@@ -76,47 +146,72 @@ body.dark-mode {
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: .9rem;
 }
 
-.nav-right a {
-    color: #fff;
+.nav-logo a {
+    display: inline-block;
 }
+
+.nav-right a,
+.menu-text {
+    color: var(--text-main);
+}
+
+.nav-right a:hover {
+    color: var(--accent-primary);
+}
+
+
+
 
 /* ================= OFFCANVAS ================= */
+
 .sc-offcanvas {
-    background: rgba(20,20,20,0.97);
+    background: var(--bg-main);
     backdrop-filter: blur(10px);
     width: 280px;
+    color: var(--text-main);
 }
 
 .sc-menu {
     list-style: none;
     padding: 4rem 1.5rem;
+    margin: 0;
 }
 
 .sc-menu li a {
     display: block;
     padding: 0.75rem 1rem;
-    color: #fff;
+
+    color: var(--text-main);
     text-decoration: none;
+
     font-family: 'Oswald', sans-serif;
     letter-spacing: 0.05em;
+
+    border-radius: 4px;
+    transition: background 0.2s ease;
 }
 
 .sc-menu li a:hover {
-    background: rgba(255,255,255,0.08);
+    background: var(--bg-surface);
 }
 
-/* Close */
+/* Close button */
 .desktop-close {
     position: absolute;
     top: 12px;
     right: 12px;
+
     background: none;
     border: none;
-    color: #fff;
+
+    color: var(--text-main);
+    cursor: pointer;
 }
+
+
 
 /* ================= HERO ================= */
 .site-wrapper {
@@ -138,8 +233,8 @@ body.dark-mode {
 }
 
 .hero-panel {
-    background: rgba(255,255,255,0.08);
-    color: #fff;
+    background: var(--bg-hero-panel);
+    color: var(--text-main);
     padding: 2rem;
     text-decoration: none;
     display: flex;
@@ -150,7 +245,7 @@ body.dark-mode {
 }
 
 .hero-panel:hover {
-    background: rgba(255,255,255,0.25);
+    background: var(--bg-soft);
 }
 
 .hero-label {
@@ -168,9 +263,193 @@ body.dark-mode {
     font-family: 'Literata', serif;
 }
 
+
+/* ================= FEATURED ARTICLES ================= */
+
+.section-featured {
+    padding: 2rem 1rem;
+}
+
+.section-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 2rem;
+}
+
+/* Grid */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Card */
+.featured-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-elevated);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+/* Image */
+.featured-image {
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Content */
+.featured-content {
+    padding: 1.5rem;
+}
+
+.featured-kicker {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-primary);
+}
+
+.featured-content h3 {
+    font-family: 'Oswald', sans-serif;
+    margin: 0.5rem 0 0.75rem;
+    font-size: 1.25rem;
+}
+
+.featured-content p {
+    font-family: 'Literata', serif;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+
+/* ================= FEATURED IMAGE HOVER ================= */
+
+.featured-image {
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s ease;
+}
+
+.featured-card:hover .featured-image {
+    transform: scale(1.05);
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
 /* ================= DARK MODE BUTTON ================= */
+
 .dark-mode-btn {
     background: none;
     border: none;
-    color: #fff;
+    padding: 0.25rem 0.5rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-left: 10px;
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: .875rem;
+    font-weight: 600;
+
+    color: var(--text-main);
+    cursor: pointer;
+    transition: opacity 0.2s ease, color 0.2s ease;
 }
+
+.dark-mode-btn:hover {
+    opacity: 0.75;
+}
+
+.dark-mode-btn i {
+    font-size: .875rem;
+    color: var(--text-main);
+}
+
+.dark-mode-btn:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+
+/* ================= NAVBAR MOBILE ================= */
+@media (max-width: 768px) {
+
+    /* Hide social icons */
+    .nav-right a {
+        display: none;
+    }
+
+    /* Hide LIGHT / DARK text, keep icon */
+    .dark-mode-btn span {
+        display: none;
+    }
+
+    /* Center logo absolutely */
+    .nav-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Mobile logo size */
+    .nav-logo img {
+        height: 42px;
+    }
+
+    /* Ensure hamburger stays left */
+    .nav-hamburger {
+        z-index: 2;
+    }
+
+    /* Right area stays minimal */
+    .nav-right {
+        z-index: 2;
+    }
+}
+
+/* ================= HERO MOBILE ================= */
+@media (max-width: 768px) {
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+        margin: 1rem;
+        
+    }
+
+    .hero-image {
+        min-height: 220px;
+            border-radius: 12px 12px 0 0;
+    }
+
+    .hero-panel {
+        border-radius: 0 0 12px 12px;
+        padding: 1.5rem;
+    }
+}
+

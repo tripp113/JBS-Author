@@ -40,16 +40,25 @@
 
         <!-- CENTER: LOGO -->
         <div class="nav-logo">
-            <img src="/assets/images/logo-main.webp" alt="Sheer Carnage">
+        <a href="/" aria-label="Sheer Carnage Home">
+            <picture>
+                <source media="(max-width: 768px)" srcset="/assets/images/logo-mob.webp">
+                <img src="/assets/images/logo-main.webp" alt="Sheer Carnage">
+            </picture>
+        </a>
         </div>
+
+
 
         <!-- RIGHT: Social + Dark Mode -->
         <div class="nav-right">
+            
             <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            
 
             <button id="darkModeToggle" class="dark-mode-btn">
-                <i class="fas fa-moon"></i><span class="nav-text-sm" style="padding-left:10px;">LIGHT</span>
+                <i class="fas fa-moon"></i><span class="nav-text-sm">LIGHT</span>
             </button>
         </div>
 
@@ -92,6 +101,61 @@
 
     </div>
 </section>
+
+<!-- ================= FEATURED ARTICLES ================= -->
+<section class="section-featured">
+    <div class="section-inner">
+
+        <h2 class="section-title">Featured Articles</h2>
+
+        <div class="featured-grid">
+
+            <a href="#" class="featured-card">
+                <div class="featured-image"
+                     style="background-image:url('/assets/images/article-1.webp');">
+                </div>
+                <div class="featured-content">
+                    <span class="featured-kicker">Comics</span>
+                    <h3>Frank Miller: How He Changed the Comics Industry</h3>
+                    <p>
+                        A deep dive into the brutal lines, moral ambiguity, and cultural shockwaves
+                        that reshaped modern comics forever.
+                    </p>
+                </div>
+            </a>
+
+            <a href="#" class="featured-card">
+                <div class="featured-image"
+                     style="background-image:url('/assets/images/article-2.webp');">
+                </div>
+                <div class="featured-content">
+                    <span class="featured-kicker">The Screen</span>
+                    <h3>The Age of Reboots and Creative Exhaustion</h3>
+                    <p>
+                        Hollywood keeps looking backward. Is it nostalgia, fear, or a system
+                        collapsing under its own weight?
+                    </p>
+                </div>
+            </a>
+
+            <a href="#" class="featured-card">
+                <div class="featured-image"
+                     style="background-image:url('/assets/images/article-3.webp');">
+                </div>
+                <div class="featured-content">
+                    <span class="featured-kicker">Weird</span>
+                    <h3>Remarkable Red Panda’s Revenge on Humanity</h3>
+                    <p>
+                        Cute, agile, and possibly plotting something far darker than we realize.
+                        Nature always gets the last word.
+                    </p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
 
 </main>
 
