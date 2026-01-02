@@ -90,7 +90,7 @@ body:not(.dark-mode) {
     height: var(--nav-height);
     background: var(--bg-main);
     color: var(--text-main);
-    border-bottom: 1px solid var(--border-subtle);
+    /* border-bottom: 1px solid var(--border-subtle); */
     z-index: 1000;
 }
 
@@ -140,6 +140,7 @@ body:not(.dark-mode) {
 /* Logo */
 .nav-logo img {
     height: 58px;
+    margin-top:15px;
 }
 
 /* Right */
@@ -222,9 +223,10 @@ body:not(.dark-mode) {
     max-width: 1300px;
     margin: 1rem auto 2rem auto;
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 2fr 1fr;
     min-height: 520px;
 }
+
 
 .hero-image {
     background-size: cover;
@@ -251,6 +253,7 @@ body:not(.dark-mode) {
 .hero-label {
     font-family: 'Oswald', sans-serif;
     letter-spacing: 0.1em;
+    margin-bottom:.87rem;
     color: #f97316;
 }
 
@@ -357,8 +360,176 @@ body:not(.dark-mode) {
     .featured-grid {
         grid-template-columns: 1fr;
     }
+
+    .featured-image {
+        aspect-ratio: 16 / 9;
+    }
+
+    .featured-content {
+        padding: 1.25rem;
+    }
 }
 
+/* ================= STREAM SECTION ================= */
+
+.stream-section {
+    margin-top: 2rem;
+}
+
+/* GRID */
+.stream-grid {
+    display: grid;
+    grid-template-columns: 2.2fr 1fr;
+    gap: 1rem;
+    align-items: start;
+}
+
+/* LEFT COLUMN */
+
+/* LEFT COLUMN CONTAINER (divider lives here) */
+.stream-main {
+    padding-right: 2rem;
+    border-right: 1px solid var(--border-subtle);
+}
+.stream-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    letter-spacing: 0.04em;
+}
+
+
+/* ARTICLE ITEM */
+
+.stream-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.25rem;
+
+    position: relative;
+    padding: 0.75rem 0.75rem 0.75rem 0;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+
+/* --- Soft background wash --- */
+body.dark-mode .stream-item:hover {
+    background: rgba(255, 255, 255, 0.035);
+}
+
+body:not(.dark-mode) .stream-item:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+/* --- Left-edge accent bar (logo red) --- */
+.stream-item::before {
+    content: "";
+    position: absolute;
+    left: -12px;
+    top: 13px;
+    bottom: 14px;
+    width: 3px;
+    background: #e44d2e; /* Sheer Carnage red */
+    opacity: 0;
+    transform: scaleY(0.6);
+    transform-origin: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.stream-item:hover::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.stream-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: transform 0.6s ease;
+}
+
+.stream-item:hover img {
+    transform: scale(1.05);
+}
+
+.stream-text h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    margin: 0.4rem 0 0.5rem;
+}
+
+.stream-text p {
+    font-family: 'Literata', serif;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.stream-kicker {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-primary);
+}
+
+/* RIGHT COLUMN */
+.stream-side {
+    padding-left: 2rem;
+    /* border-left: 1px solid var(--border-subtle); */
+}
+
+.stream-side-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.08em;
+}
+
+/* VAULT LIST */
+.vault-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vault-list li {
+    margin-bottom: 1rem;
+}
+
+.vault-list a {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.vault-list a:hover {
+    text-decoration: underline;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+    .stream-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stream-side {
+        border-left: none;
+        padding-left: 0;
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .stream-item {
+        grid-template-columns: 1fr;
+    }
+}
 
 
 /* ================= DARK MODE BUTTON ================= */
@@ -434,22 +605,88 @@ body:not(.dark-mode) {
 }
 
 /* ================= HERO MOBILE ================= */
+@media (max-width: 1299px) {
+
+    .hero-image {
+        min-height: 320px;
+        border-radius: 0 0 0 0;
+    }
+
+     .hero-panel {
+        border-radius: 0 0 0 0;
+        padding: 1.5rem;
+    }
+
+}
+
 @media (max-width: 768px) {
 
     .hero-inner {
         grid-template-columns: 1fr;
-        margin: 1rem;
+        /* margin: 1rem; */
         
     }
 
     .hero-image {
-        min-height: 220px;
-            border-radius: 12px 12px 0 0;
+        min-height: 420px;
+        border-radius: 0 0 0 0;
     }
 
     .hero-panel {
-        border-radius: 0 0 12px 12px;
+        border-radius: 0 0 0 0;
         padding: 1.5rem;
     }
+}
+
+
+/* ============================================
+   FOOTER – SHEER CARNAGE
+   ============================================ */
+
+.site-footer {
+    padding: 3rem 1rem 2.5rem;
+    background: var(--bg-main);
+    color: var(--text-muted);
+    /* border-top: 1px solid var(--border-subtle); */
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+}
+
+/* Logo */
+.footer-logo {
+    width: clamp(160px, 22vw, 260px);
+    height: auto;
+    opacity: 0.95;
+}
+
+/* Social icons */
+.footer-socials {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.footer-socials a {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer-socials a:hover {
+    color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+/* Copyright */
+.footer-copy {
+    font-size: 0.8rem;
+    opacity: 0.75;
 }
 

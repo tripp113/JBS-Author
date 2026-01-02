@@ -23,62 +23,7 @@
 
 <body class="dark-mode">
 
-<!-- ================= NAVBAR ================= -->
-<nav class="sc-navbar">
-    <div class="nav-inner">
-
-        <!-- LEFT: Hamburger -->
-        <button class="nav-hamburger"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#scNav"
-                aria-label="Open Menu">
-            <span class="hamburger-icon">
-                <span></span><span></span><span></span>
-            </span>
-            <span class="menu-text">MENU</span>
-        </button>
-
-        <!-- CENTER: LOGO -->
-        <div class="nav-logo">
-        <a href="/" aria-label="Sheer Carnage Home">
-            <picture>
-                <source media="(max-width: 768px)" srcset="/assets/images/logo-mob.webp">
-                <img src="/assets/images/logo-main.webp" alt="Sheer Carnage">
-            </picture>
-        </a>
-        </div>
-
-
-
-        <!-- RIGHT: Social + Dark Mode -->
-        <div class="nav-right">
-            
-            <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            
-
-            <button id="darkModeToggle" class="dark-mode-btn">
-                <i class="fas fa-moon"></i><span class="nav-text-sm">LIGHT</span>
-            </button>
-        </div>
-
-    </div>
-</nav>
-
-<!-- ================= OFFCANVAS ================= -->
-<div class="offcanvas offcanvas-start sc-offcanvas" id="scNav">
-    <button class="desktop-close" data-bs-dismiss="offcanvas">
-        <i class="fas fa-times"></i>
-    </button>
-
-    <ul class="sc-menu">
-        <li><a href="#">COMICS</a></li>
-        <li><a href="#">THE SCREEN</a></li>
-        <li><a href="#">KINGS OF CARNAGE</a></li>
-        <li><a href="#">STATIC & SIGNAL</a></li>
-        <li><a href="#">NO CONTEXT</a></li>
-    </ul>
-</div>
+    <div id="nav-slot"></div>
 
 <!-- ================= HERO ================= -->
 <main class="site-wrapper">
@@ -95,7 +40,7 @@
         <a href="#" class="hero-panel">
             <span class="hero-label">FEATURE</span>
             <h1>WHAT THE HECK IS HAPPENING HERE?!?</h1>
-            <p>This is where it all ends.<br>The new reality starts now.</p>
+            <p>This is where it all ends<br>And the kinda dream that you've never seen</p>
             <span class="hero-cta">READ MORE</span>
         </a>
 
@@ -143,7 +88,7 @@
                      style="background-image:url('/assets/images/article-3.webp');">
                 </div>
                 <div class="featured-content">
-                    <span class="featured-kicker">Weird</span>
+                    <span class="featured-kicker">No Context</span>
                     <h3>Sputnik's Remarkable Journey of Revenge</h3>
                     <p>
                         Cute, agile, and possibly plotting something far darker than we realize.
@@ -156,14 +101,105 @@
     </div>
 </section>
 
+<!-- STREAM SECTION -->
+<section class="stream-section section-m-y">
+     <div class="section-inner">
+        <div class="stream-grid">
+
+        <!-- LEFT: RECENT ARTICLES -->
+        <div class="stream-main">
+            <h2 class="stream-heading">RECENT ARTICLES</h2>
+
+            <article class="stream-item">
+                <img src="/assets/images/recent-001.webp" alt="" />
+                <div class="stream-text">
+                    <span class="stream-kicker">COMICS</span>
+                    <h3>Frank Miller and the Shape of Modern Comics</h3>
+                    <p>A look at how Miller’s visual language reshaped the industry — for better and worse.</p>
+                </div>
+            </article>
+
+            <article class="stream-item">
+                <img src="/assets/images/recent-002.webp" alt="" />
+                <div class="stream-text">
+                    <span class="stream-kicker">ON SCREEN</span>
+                    <h3>Why Reboots Keep Failing</h3>
+                    <p>Studios keep chasing nostalgia. Audiences keep asking for something new.</p>
+                </div>
+            </article>
+
+            <article class="stream-item">
+                <img src="/assets/images/recent-003.webp" alt="" />
+                <div class="stream-text">
+                    <span class="stream-kicker">HISTORY</span>
+                    <h3>The Long Shadow of the Roman Collapse</h3>
+                    <p>Empires don’t fall overnight — they rot slowly, then all at once.</p>
+                </div>
+            </article>
+
+            <article class="stream-item">
+                <img src="/assets/images/recent-004.webp" alt="" />
+                <div class="stream-text">
+                    <span class="stream-kicker">CULTURE</span>
+                    <h3>The Death of Subcultures in the Algorithm Age</h3>
+                    <p>What happens when every underground movement is surfaced instantly?</p>
+                </div>
+            </article>
+
+            <article class="stream-item">
+                <img src="/assets/images/recent-005.webp" alt="" />
+                <div class="stream-text">
+                    <span class="stream-kicker">THE SCREEN</span>
+                    <h3>Why Prestige TV Feels Disposable Now</h3>
+                    <p>More shows, more budgets — less cultural memory.</p>
+                </div>
+            </article>
+
+            <article class="stream-item">
+                <img src="/assets/images/recent-006.webp" alt="" />
+                <div class="stream-text">
+                    <span class="stream-kicker">ESSAYS</span>
+                    <h3>The Comfort of Familiar Enemies</h3>
+                    <p>Why modern discourse thrives on predictable villains.</p>
+                </div>
+            </article>
+        </div>
+
+        <!-- RIGHT: FROM THE VAULT -->
+        <aside class="stream-side">
+            <h3 class="stream-side-heading">FROM THE VAULT</h3>
+
+            <ul class="vault-list">
+                <li><a href="#">The Forgotten Language of Pulp Covers</a></li>
+                <li><a href="#">When Comics Were Dangerous</a></li>
+                <li><a href="#">Hollywood’s Obsession with Collapse</a></li>
+                <li><a href="#">The Myth of the Golden Age</a></li>
+                <li><a href="#">Why Every Era Thinks It’s the End</a></li>
+                <li><a href="#">Violence, Spectacle, and Catharsis</a></li>
+            </ul>
+        </aside>
+        </div>
+    </div>
+</section>
 
 </main>
+
+
+
+<div id="footer-slot"></div>
+
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Site JS -->
-<script src="/assets/js/site.js"></script>
+ <script src="assets/js/includes.js"></script>
+<script src="assets/js/site.js"></script>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 
 </body>
 </html>

@@ -1,32 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('darkModeToggle');
-    const icon = toggleBtn.querySelector('i');
-    const label = toggleBtn.querySelector('span');
+function syncToggleUI() {
+  const toggleBtn = document.getElementById("darkModeToggle");
+  if (!toggleBtn) return;
 
-    // 1. Load saved preference (default = dark)
-    const savedMode = localStorage.getItem('theme');
-    if (savedMode === 'light') {
-        document.body.classList.remove('dark-mode');
-        icon.classList.replace('fa-moon', 'fa-sun');
-        label.textContent = 'DARK';
-    } else {
-        document.body.classList.add('dark-mode');
-        icon.classList.replace('fa-sun', 'fa-moon');
-        label.textContent = 'LIGHT';
-    }
+  const icon = toggleBtn.querySelector("i");
+  const label = toggleBtn.querySelector("span");
+  const isDark = document.body.classList.contains("dark-mode");
 
-    // 2. Toggle on click
-    toggleBtn.addEventListener('click', () => {
-        const isDark = document.body.classList.toggle('dark-mode');
+  if (isDark) {
+    icon.classList.replace("fa-sun", "fa-moon");
+    label.textContent = "LIGHT";
+  } else {
+    icon.classList.replace("fa-moon", "fa-sun");
+    label.textContent = "DARK";
+  }
+}
 
-        if (isDark) {
-            icon.classList.replace('fa-sun', 'fa-moon');
-            label.textContent = 'LIGHT';
-            localStorage.setItem('theme', 'dark');
-        } else {
-            icon.classList.replace('fa-moon', 'fa-sun');
-            label.textContent = 'DARK';
-            localStorage.setItem('theme', 'light');
-        }
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  const savedMode = localStorage.getItem("theme") || "dark";
+  document.body.classList.toggle("dark-mode", savedMode === "dark");
 });
+
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest("#darkModeToggle");
+  if (!btn) return;
+
+  const isDark = document.body.classList.toggle("dark-mode");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  syncToggleUI();
+});
+
+// when partials load, update the button UI once
+window.addEventListener("partials:loaded", syncToggleUI);

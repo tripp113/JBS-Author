@@ -1,0 +1,56 @@
+<!-- ================= NAVBAR ================= -->
+<nav class="sc-navbar">
+    <div class="nav-inner">
+
+        <!-- LEFT: Hamburger -->
+        <button class="nav-hamburger"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#scNav"
+                aria-label="Open Menu">
+            <span class="hamburger-icon">
+                <span></span><span></span><span></span>
+            </span>
+            <span class="menu-text">MENU</span>
+        </button>
+
+        <!-- CENTER: LOGO -->
+        <div class="nav-logo">
+        <a href="/" aria-label="Sheer Carnage Home">
+            <picture>
+                <source media="(max-width: 768px)" srcset="/assets/images/logo-mob.webp">
+                <img src="/assets/images/logo-main.webp" alt="Sheer Carnage">
+            </picture>
+        </a>
+        </div>
+
+
+
+        <!-- RIGHT: Social + Dark Mode -->
+        <div class="nav-right">
+            
+            <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            
+
+            <button id="darkModeToggle" class="dark-mode-btn">
+                <i class="fas fa-moon"></i><span class="nav-text-sm">LIGHT</span>
+            </button>
+        </div>
+
+    </div>
+</nav>
+
+<!-- ================= OFFCANVAS ================= -->
+<div class="offcanvas offcanvas-start sc-offcanvas" id="scNav">
+    <button class="desktop-close" data-bs-dismiss="offcanvas">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <ul class="sc-menu">
+        <li><a href="#">COMICS</a></li>
+        <li><a href="#">THE SCREEN</a></li>
+        <li><a href="#">KINGS OF CARNAGE</a></li>
+        <li><a href="#">STATIC & SIGNAL</a></li>
+        <li><a href="#">NO CONTEXT</a></li>
+    </ul>
+</div>
